@@ -1,16 +1,16 @@
-NAME = philo
+NAME = philo_bonus
 CC = cc
-
 CFLAGS = -Wall -Wextra -Werror
 # CFLAGS += -g -fsanitize=address
-CFLAGS += -g -fsanitize=thread
+# CFLAGS += -g -fsanitize=thread
 
-SRCS = philo_init.c \
-	main.c \
-	philo_death.c \
-	philo_routine.c \
-	utils.c \
-	utils_err.c
+SRCS = main_bonus.c \
+	fork_management_bonus.c \
+	philo_init_bonus.c \
+	philo_routine_bonus.c \
+	time_management_bonus.c \
+	utils_bonus.c \
+	utils_err_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 
