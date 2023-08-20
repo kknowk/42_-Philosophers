@@ -6,7 +6,7 @@
 /*   By: khorike <khorike@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 15:06:05 by khorike           #+#    #+#             */
-/*   Updated: 2023/08/20 15:20:20 by khorike          ###   ########.fr       */
+/*   Updated: 2023/08/20 17:49:52 by khorike          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	initialize(int number_of_philosophers,
 	i = 0;
 	while (i < number_of_philosophers)
 	{
-		snprintf(sem_name, sizeof(sem_name), "/fork%d", i);
 		fork_sem = sem_open(sem_name, O_CREAT, 0666, 1);
 		if (fork_sem == SEM_FAILED)
 			exit(EXIT_FAILURE);
@@ -41,16 +40,3 @@ void	initialize(int number_of_philosophers,
 		i++;
 	}
 }
-
-// void	cleanup(sem_t **forks, int number_of_philosophers)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < number_of_philosophers)
-// 	{
-// 		sem_close(forks[i]);
-// 		i++;
-// 	}
-// 	free(forks);
-// }
