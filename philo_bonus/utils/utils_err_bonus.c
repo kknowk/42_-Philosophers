@@ -6,11 +6,11 @@
 /*   By: khorike <khorike@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 12:58:44 by khorike           #+#    #+#             */
-/*   Updated: 2023/08/17 19:30:04 by khorike          ###   ########.fr       */
+/*   Updated: 2024/01/29 12:52:20 by khorike          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "../philo_bonus.h"
 
 void	put_error(char *error_str)
 {
@@ -35,3 +35,4 @@ void	ft_free(void *ptr)
 	}
 	return ;
 }
+

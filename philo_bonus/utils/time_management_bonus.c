@@ -6,11 +6,11 @@
 /*   By: khorike <khorike@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 14:54:55 by khorike           #+#    #+#             */
-/*   Updated: 2023/08/20 15:00:06 by khorike          ###   ########.fr       */
+/*   Updated: 2024/01/29 12:42:57 by khorike          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "../philo_bonus.h"
 
 long	get_elapsed_time_ms(struct timeval *start_time)
 {

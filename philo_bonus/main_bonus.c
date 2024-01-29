@@ -6,7 +6,7 @@
 /*   By: khorike <khorike@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 15:12:18 by khorike           #+#    #+#             */
-/*   Updated: 2023/08/20 17:43:07 by khorike          ###   ########.fr       */
+/*   Updated: 2024/01/29 14:22:10 by khorike          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,13 @@ int	main(int argc, char *argv[])
 	sem_t	**forks;
 	pid_t	*pids;
 
-	number_of_philosophers = ft_atoi_kai(argv[1]);
 	if (check_validity_of_args(argc, argv) == false)
 		return (FAILURE);
+	number_of_philosophers = ft_atoi_kai(argv[1]);
 	lonely_philo(number_of_philosophers, argv);
-	philosophers = ft_malloc(sizeof(t_philo) * number_of_philosophers);
+	philosophers = ft_calloc(sizeof(t_philo), number_of_philosophers);
 	initialize(number_of_philosophers, &forks, philosophers);
-	pids = ft_malloc(sizeof(pid_t) * number_of_philosophers);
+	pids = ft_calloc(sizeof(pid_t), number_of_philosophers);
 	start_philosophers(philosophers, pids, argv, argc);
 	wait_kill(number_of_philosophers);
 	cleanup(forks, number_of_philosophers);
@@ -120,38 +120,3 @@ int	main(int argc, char *argv[])
 	free(pids);
 	return (0);
 }
-
-// int	main(int argc, char *argv[])
-// {
-// 	int		number_of_philosophers;
-// 	t_philo	*philosophers;
-// 	sem_t	**forks;
-// 	pid_t	*pids;
-
-// 	number_of_philosophers = ft_atoi_kai(argv[1]);
-// 	if (check_validity_of_args(argc, argv) == false)
-// 		return (FAILURE);
-// 	philosophers = ft_malloc(sizeof(t_philo) * number_of_philosophers);
-// 	initialize(number_of_philosophers, &forks, philosophers);
-// 	pids = ft_malloc(sizeof(pid_t) * number_of_philosophers);
-// 	start_philosophers(philosophers, pids, argv, argc);
-//     int status;
-//     pid_t child_pid = waitpid(-1, &status, 0);
-//     printf("WIFEXITED :%d\n", WIFEXITED(status));
-//     if (WIFEXITED(status) && WEXITSTATUS(status) == 1)
-//     {
-//         (void)child_pid;
-//         // One of the child processes has died
-//         // for (int i = 0; i < number_of_philosophers; i++)
-//         // {
-//             // if (pids[i] != child_pid)
-//             // {
-//                  kill(0, SIGKILL); 
-//             // }
-//     }
-
-// 	cleanup(forks, number_of_philosophers);
-// 	free(philosophers);
-// 	free(pids);
-// 	return (0);
-// }

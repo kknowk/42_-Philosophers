@@ -6,7 +6,7 @@
 /*   By: khorike <khorike@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:00:52 by khorike           #+#    #+#             */
-/*   Updated: 2023/08/20 17:30:02 by khorike          ###   ########.fr       */
+/*   Updated: 2024/01/29 15:04:08 by khorike          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_philo{
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				times_to_eat;
-	struct timeval	last_meal_time;
+	long			last_meal_time;
 }	t_philo;
 
 // fork_management
@@ -80,6 +80,8 @@ void			take_forks(t_philo *p, struct timeval *start_time);
 void			release_forks(t_philo *p);
 
 void			philosopher(t_philo *p);
+
+// ./utils
 
 // time_management
 void			my_usleep(long action_time);
@@ -91,12 +93,18 @@ void			initialize(int number_of_philosophers,
 // utils
 size_t			ft_strlen(const char *s);
 int				ft_atoi_kai(char *nptr);
-void			*ft_malloc(size_t size);
+void			*ft_calloc(size_t count, size_t size);
 void			cleanup(sem_t **forks, int number_of_philosophers);
 
 // utils_err
 void			*perr_return_null(char *error_str);
 void			put_error(char *error_str);
 void			ft_free(void *ptr);
+
+// ft_itoa
+char			*ft_itoa(int n);
+
+
+char	*ft_snprintf(char *str, int n);
 
 #endif

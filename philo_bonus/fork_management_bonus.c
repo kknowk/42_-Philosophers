@@ -6,7 +6,7 @@
 /*   By: khorike <khorike@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 11:19:48 by khorike           #+#    #+#             */
-/*   Updated: 2023/08/20 15:44:56 by khorike          ###   ########.fr       */
+/*   Updated: 2024/01/29 13:46:51 by khorike          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	take_forks(t_philo *p, struct timeval *start_time)
 	}
 	else
 	{
+		usleep(200);
 		sem_wait(p->right_fork);
 		sem_wait(p->left_fork);
 		printf("%ld %d has taken a fork\n",

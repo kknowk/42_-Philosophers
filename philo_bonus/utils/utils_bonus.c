@@ -6,11 +6,11 @@
 /*   By: khorike <khorike@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 18:44:33 by khorike           #+#    #+#             */
-/*   Updated: 2023/08/20 16:38:24 by khorike          ###   ########.fr       */
+/*   Updated: 2024/01/29 12:45:01 by khorike          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "../philo_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -53,17 +53,40 @@ int	ft_atoi_kai(char *nptr)
 	return (result);
 }
 
-void	*ft_malloc(size_t size)
+static void	*ft_memset(void *buf, int ch, size_t n)
 {
-	void	*p2;
+	size_t			i;
+	unsigned char	*buf_set;
 
-	p2 = malloc(size);
-	if (p2 == NULL)
+	buf_set = (unsigned char *)buf;
+	i = 0;
+	while (i < n)
+	{
+		buf_set[i] = (unsigned char)ch;
+		i++;
+	}
+	return (buf);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*pmem;
+
+	if (count == 0 || size == 0)
+	{
+		count = 1;
+		size = 1;
+	}
+	if (count > SIZE_MAX / size)
+		exit(EXIT_FAILURE);
+	pmem = malloc(count * size);
+	if (pmem == NULL)
 	{
 		write(STDERR_FILENO, ERR_MALLOC_FAIL, ft_strlen(ERR_MALLOC_FAIL));
 		exit(1);
 	}
-	return (p2);
+	ft_memset(pmem, 0, count * size);
+	return (pmem);
 }
 
 void	cleanup(sem_t **forks, int number_of_philosophers)
